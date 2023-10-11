@@ -3,7 +3,7 @@ import reactLogo from "./assets/react.svg";
 import twaLogo from "./assets/tapps.png";
 import viteLogo from "/vite.svg";
 import "./App.css";
-
+import { useNavigate } from "react-router-dom";
 import WebApp from "@twa-dev/sdk";
 
 function App() {
@@ -14,6 +14,8 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem("count", count.toString());
   }, [count]);
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -43,6 +45,8 @@ function App() {
         >
           Show Alert
         </button>
+        <button onClick={() => navigate("/create")}>Create</button>
+        <button onClick={() => navigate("/iframe")}>Iframe</button>
       </div>
     </>
   );
