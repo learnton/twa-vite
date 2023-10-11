@@ -1,13 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import twaLogo from './assets/tapps.png'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import reactLogo from "./assets/react.svg";
+import twaLogo from "./assets/tapps.png";
+import viteLogo from "/vite.svg";
+import "./App.css";
 
-import WebApp from '@twa-dev/sdk'
+import WebApp from "@twa-dev/sdk";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(
+    Number(window.localStorage.getItem("count") || 0)
+  );
+
+  useEffect(() => {
+    window.localStorage.setItem("count", count.toString());
+  }, [count]);
 
   return (
     <>
@@ -30,12 +36,16 @@ function App() {
       </div>
       {/*  */}
       <div className="card">
-        <button onClick={() => WebApp.showAlert(`Hello World! Current count is ${count}`)}>
-            Show Alert
+        <button
+          onClick={() =>
+            WebApp.showAlert(`Hello World! Current count is ${count}`)
+          }
+        >
+          Show Alert
         </button>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
