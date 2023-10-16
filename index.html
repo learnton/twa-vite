@@ -10,7 +10,6 @@
     import { Buffer } from "buffer";
     window.Buffer = Buffer;
     const global = globalThis;
-    global.Telegram = global.Telegram || {}
     window.global = global;
 
   </script>
@@ -18,7 +17,6 @@
 
 <body>
   <div id="root"></div>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 
