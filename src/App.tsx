@@ -45,8 +45,8 @@ function App() {
         >
           Show Alert
         </button>
-        <button onClick={() => navigate("/create")}>Create</button>
-        <button onClick={() => navigate("/iframe")}>Iframe</button>
+        <button onClick={() => navigate("/create")}>Create Wallet</button>
+        <button onClick={() => navigate("/info")}>Test Info</button>
       </div>
     </>
   );

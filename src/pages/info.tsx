@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
-function Iframe() {
+function Info() {
   const navigate = useNavigate();
+  const initData = sessionStorage.getItem("initData");
 
   return (
     <>
-      <h1>iframe test</h1>
+      <h1>test info</h1>
+      <div>{initData}</div>
       <iframe height={300} src="https://m.baidu.com"></iframe>
       <div>
         <button onClick={() => navigate("/")}>back</button>
@@ -14,4 +16,4 @@ function Iframe() {
   );
 }
 
-export default Iframe;
+export default Info;
