@@ -1,55 +1,44 @@
-import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import twaLogo from "./assets/tapps.png";
-import viteLogo from "/vite.svg";
+import demos from "@/lib/demo.ts";
 import "./App.css";
-import { useNavigate } from "react-router-dom";
-import WebApp from "@twa-dev/sdk";
 
-function App() {
-  const [count, setCount] = useState(
-    Number(window.localStorage.getItem("count") || 0)
-  );
-
-  useEffect(() => {
-    window.localStorage.setItem("count", count.toString());
-  }, [count]);
-
-  const navigate = useNavigate();
-
+export default function Page() {
   return (
     <>
-      <div>
-        <a href="https://ton.org/dev" target="_blank">
-          <img src={twaLogo} className="logo" alt="TWA logo" />
-        </a>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>TWA + Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-      {/*  */}
-      <div className="card">
-        <button
-          onClick={() =>
-            WebApp.showAlert(`Hello World! Current count is ${count}`)
-          }
-        >
-          Show Alert
-        </button>
-        <button onClick={() => navigate("/create")}>Create Wallet</button>
-        <button onClick={() => navigate("/info")}>Test Info</button>
+      <h1 className="font-medium text-xl mb-4">Examples</h1>
+
+      <div className="space-y-10 text-white">
+        {demos.map((section) => {
+          return (
+            <div key={section.name} className="space-y-5">
+              <div className="font-semibold text-xs tracking-wider text-gray-400 uppercase">
+                {section.name}
+              </div>
+
+              <div className="grid gap-5 grid-cols-1 lg:grid-cols-2">
+                {section.items.map((item) => {
+                  return (
+                    <a
+                      href={item.path}
+                      key={item.name}
+                      className="rounded-lg space-y-1.5 bg-gray-900 py-3 px-5 group block hover:bg-gray-800"
+                    >
+                      <div className="font-medium text-gray-200 group-hover:text-gray-50">
+                        {item.name}
+                      </div>
+
+                      {item.description ? (
+                        <div className="text-sm text-gray-400 line-clamp-3 group-hover:text-gray-300">
+                          {item.description}
+                        </div>
+                      ) : null}
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </>
   );
 }
-
-export default App;

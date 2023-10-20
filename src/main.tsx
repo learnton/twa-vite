@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
+
 import "./index.css";
 
 import WebApp from "@twa-dev/sdk";
@@ -10,8 +10,11 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import Create from "./pages/create.tsx";
-import Info from "./pages/info.tsx";
+import App from "./App.tsx";
+import SysComponent from "./pages/sys-components/page.tsx";
+import ThemeConfig from "./pages/theme-config/page.tsx";
+
+// const modules = import.meta.glob("./pages/*/page.tsx");
 
 const router = createBrowserRouter(
   [
@@ -20,12 +23,12 @@ const router = createBrowserRouter(
       element: <App />,
     },
     {
-      path: "/create",
-      element: <Create />,
+      path: "/sys-components",
+      element: <SysComponent />,
     },
     {
-      path: "/info",
-      element: <Info />,
+      path: "/theme-config",
+      element: <ThemeConfig />,
     },
     {
       path: "*",
