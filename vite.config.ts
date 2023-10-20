@@ -7,7 +7,7 @@ import path from "path";
 export default defineConfig({
   plugins: [react(), nodePolyfills(), basicSsl()],
   build: {
-    outDir: "./docs",
+    outDir: "./dist",
   },
   base: "/twa-vite/",
   resolve: {
