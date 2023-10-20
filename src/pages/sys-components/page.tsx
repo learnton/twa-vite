@@ -1,6 +1,6 @@
 "use client";
 
-import { Switch } from "@/ui";
+import { Switch, Button } from "@/ui";
 import { useState, useEffect } from "react";
 import WebApp from "@twa-dev/sdk";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +10,10 @@ export default function Page() {
 
   const [showBack, setShowBack] = useState(true);
 
-  WebApp.BackButton.onClick(() => navigate(-1));
+  WebApp.BackButton.onClick(() => {
+    navigate(-1);
+    WebApp.BackButton.hide();
+  });
 
   useEffect(() => {
     if (showBack.valueOf()) {
@@ -26,6 +29,12 @@ export default function Page() {
     text: "主按钮",
   });
 
+  const MainButtonHandler = () => {
+    WebApp.showAlert("You clicked MainButton!");
+    WebApp.MainButton.offClick(MainButtonHandler);
+  };
+  WebApp.MainButton.onClick(MainButtonHandler);
+
   useEffect(() => {
     if (showMain.valueOf()) {
       WebApp.MainButton.show();
@@ -36,9 +45,9 @@ export default function Page() {
 
   return (
     <div className="max-w-none prose prose-sm prose-invert">
-      <h1 className="font-bold text-xl">Component</h1>
+      <h1 className="font-bold text-xl">UI Component</h1>
 
-      <ul>
+      <ul className="space-y-2">
         <li>
           显示后退按钮
           <Switch
@@ -70,6 +79,42 @@ export default function Page() {
               } inline-block h-4 w-4 transform rounded-full bg-white transition`}
             />
           </Switch>
+        </li>
+        <li>
+          <Button onClick={() => WebApp.openLink("https://zcloak.network/")}>
+            openLink()
+          </Button>
+        </li>
+        <li>
+          <Button
+            onClick={() =>
+              WebApp.showPopup({
+                title: "A Popup",
+                message: "An message of Popup",
+              })
+            }
+          >
+            showPopup()
+          </Button>
+        </li>
+        <li>
+          <Button onClick={() => WebApp.showAlert("An alert message!")}>
+            showAlert()
+          </Button>
+        </li>
+        <li>
+          <Button onClick={() => WebApp.showConfirm("An confirm dialog")}>
+            showConfirm()
+          </Button>
+        </li>
+        <li
+          onClick={() =>
+            WebApp.showScanQrPopup({
+              text: "custom title text",
+            })
+          }
+        >
+          <Button>showScanQrPopup()</Button>
         </li>
       </ul>
     </div>
