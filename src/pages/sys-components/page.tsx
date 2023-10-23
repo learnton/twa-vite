@@ -6,6 +6,9 @@ import WebApp from "@twa-dev/sdk";
 import { useNavigate } from "react-router-dom";
 
 export default function Page() {
+  // expand mini app
+  WebApp.expand();
+
   const navigate = useNavigate();
 
   const [showBack, setShowBack] = useState(true);
