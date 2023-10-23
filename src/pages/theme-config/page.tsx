@@ -14,22 +14,8 @@ export default function Page() {
     const randomColorObj = uniqolor.random();
     const randomColor = randomColorObj.color as HexColor;
 
-    WebApp.themeParams.bg_color = randomColor;
-    WebApp.themeParams.text_color = randomColorObj.isLight
-      ? "#000000"
-      : "#ffffff";
-
-    const randomButtonColorObj = uniqolor.random();
-    const randomButtonColor = randomButtonColorObj.color as HexColor;
-    WebApp.themeParams.button_color = randomButtonColor;
-    WebApp.themeParams.button_text_color = randomButtonColorObj.isLight
-      ? "#000000"
-      : "#ffffff";
-    WebApp.themeParams.secondary_bg_color =
-      randomButtonColorObj.color as HexColor;
-
-    console.log("random color: ", randomColor);
-    console.log("random button color: ", randomButtonColor);
+    WebApp.setHeaderColor(randomColor);
+    WebApp.setBackgroundColor(randomColor);
   };
 
   return (

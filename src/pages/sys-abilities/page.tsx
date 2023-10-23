@@ -32,6 +32,7 @@ export default function Page() {
       <h1 className="font-bold text-xl">sys-ability</h1>
 
       <ul className="space-y-2">
+        <li>系统信息：</li>
         <li onClick={() => handleClicpboard()}>
           <Button>访问剪切板</Button>
         </li>
