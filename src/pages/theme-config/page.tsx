@@ -3,10 +3,13 @@
 import { Button } from "@/ui";
 import WebApp from "@twa-dev/sdk";
 import uniqolor from "uniqolor";
+import useRouteChange from "@/hooks/useRouteChange.ts";
 
 type HexColor = `#${string}`;
 
 export default function Page() {
+  useRouteChange();
+
   const handleRandomColor = () => {
     const randomColorObj = uniqolor.random();
     const randomColor = randomColorObj.color as HexColor;

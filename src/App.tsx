@@ -1,7 +1,15 @@
 import demos from "@/lib/demo.ts";
 import "./App.css";
+import { useEffect } from "react";
+import WebApp from "@twa-dev/sdk";
+import { useLocation } from "react-router-dom";
 
 export default function Page() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    console.log(pathname);
+  }, [pathname]);
+
   return (
     <>
       <h1 className="font-medium text-xl mb-4">Examples</h1>

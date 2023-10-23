@@ -2,8 +2,10 @@
 
 import { Button } from "@/ui";
 import WebApp from "@twa-dev/sdk";
+import useRouteChange from "@/hooks/useRouteChange.ts";
 
 export default function Page() {
+  useRouteChange();
   // expand mini app
   WebApp.expand();
 

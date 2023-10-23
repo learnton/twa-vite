@@ -3,20 +3,15 @@
 import { Switch, Button } from "@/ui";
 import { useState, useEffect } from "react";
 import WebApp from "@twa-dev/sdk";
-import { useNavigate } from "react-router-dom";
+
+import useRouteChange from "@/hooks/useRouteChange.ts";
 
 export default function Page() {
+  useRouteChange();
   // expand mini app
   WebApp.expand();
 
-  const navigate = useNavigate();
-
   const [showBack, setShowBack] = useState(true);
-
-  WebApp.BackButton.onClick(() => {
-    navigate(-1);
-    WebApp.BackButton.hide();
-  });
 
   useEffect(() => {
     if (showBack.valueOf()) {
