@@ -1,13 +1,9 @@
 import demos from "@/lib/demo.ts";
 import "./App.css";
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import useRouteChange from "@/hooks/useRouteChange.ts";
 
 export default function Page() {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    console.log(pathname);
-  }, [pathname]);
+  useRouteChange();
 
   return (
     <>
