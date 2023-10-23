@@ -12,6 +12,7 @@ import {
 
 import App from "./App.tsx";
 import SysComponent from "./pages/sys-components/page.tsx";
+import SysAbility from "./pages/sys-abilities/page.tsx";
 import ThemeConfig from "./pages/theme-config/page.tsx";
 
 // const modules = import.meta.glob("./pages/*/page.tsx");
@@ -25,6 +26,10 @@ const router = createBrowserRouter(
     {
       path: "/sys-components",
       element: <SysComponent />,
+    },
+    {
+      path: "/sys-abilities",
+      element: <SysAbility />,
     },
     {
       path: "/theme-config",

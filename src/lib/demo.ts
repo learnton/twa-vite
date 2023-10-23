@@ -14,6 +14,11 @@ const routes: { name: string; items: Item[] }[] = [
         description: "@twa-dev/sdk 提供的ui组件",
       },
       {
+        name: "扩展能力",
+        path: "sys-abilities",
+        description: "@twa-dev/sdk 提供的扩展能力",
+      },
+      {
         name: "主题配置",
         path: "theme-config",
         description: "主题色配置能力",
