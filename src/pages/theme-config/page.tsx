@@ -26,6 +26,10 @@ export default function Page() {
         <li onClick={() => handleRandomColor()}>
           <Button>随机颜色</Button>
         </li>
+        <li>主题类型：{WebApp.colorScheme}</li>
+        <li>主题数据：{JSON.stringify(WebApp.themeParams)}</li>
+        <li>headerColor: {WebApp.headerColor}</li>
+        <li>backgroundColor: {WebApp.backgroundColor}</li>
       </ul>
     </div>
   );
