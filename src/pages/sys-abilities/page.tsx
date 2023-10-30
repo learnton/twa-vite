@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Switch, Button } from "@/ui";
 import WebApp from "@twa-dev/sdk";
 import useRouteChange from "@/hooks/useRouteChange.ts";
@@ -9,7 +9,8 @@ export default function Page() {
   // expand mini app
   WebApp.expand();
   console.log("WebApp.version", WebApp.version);
-  const CloudUserId = useRef("");
+  const [CloudUserId, setCloudUserId] = useState("");
+
   if (parseInt(WebApp.version) > 6) {
     WebApp.CloudStorage.getItem("user_id", (err, result) => {
       if (err || !result) {
@@ -19,9 +20,11 @@ export default function Page() {
           userDataJson.user?.id || "something is wrong"
         );
       } else {
-        CloudUserId.current = result;
+        setCloudUserId(result);
       }
     });
+  } else {
+    WebApp.showAlert(`CloudStorage unuse, ${WebApp.version}`);
   }
 
   const handleClicpboard = () => {
@@ -98,7 +101,7 @@ export default function Page() {
             调起机器人输入
           </Button>
         </li>
-        <li>CloudStorage: {CloudUserId.current || "unset"}</li>
+        <li>CloudStorage: {CloudUserId || "unset"}</li>
       </ul>
     </div>
   );
