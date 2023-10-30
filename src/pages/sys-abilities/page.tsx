@@ -15,7 +15,7 @@ export default function Page() {
     WebApp.CloudStorage.getItem("user_id", (err, result) => {
       const userDataJson = JSON.parse(WebApp.initData) as any;
       WebApp.showAlert(
-        `cloud user_id=${result}, err=${err}, user_id=${userDataJson.user?.id}`
+        `cloud user_id=${result}, user_id=${userDataJson.user?.id}`
       );
       if (!result) {
         WebApp.CloudStorage.setItem(
@@ -27,7 +27,7 @@ export default function Page() {
       }
     });
   } else {
-    alert(`CloudStorage unuse, ${WebApp.version}`);
+    WebApp.showAlert(`CloudStorage unuse, ${WebApp.version}`);
   }
 
   const handleClicpboard = () => {
