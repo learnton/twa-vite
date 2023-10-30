@@ -8,11 +8,12 @@ export default function Page() {
   useRouteChange();
   // expand mini app
   WebApp.expand();
-  console.log("WebApp.version", WebApp.version);
+  console.log("WebApp.version", WebApp.version, parseFloat(WebApp.version));
   const [CloudUserId, setCloudUserId] = useState("");
 
   if (parseFloat(WebApp.version) > 6) {
     WebApp.CloudStorage.getItem("user_id", (err, result) => {
+      WebApp.showAlert("cloud user_id=" + result);
       if (err || !result) {
         const userDataJson = JSON.parse(WebApp.initData) as any;
         WebApp.CloudStorage.setItem(
@@ -24,7 +25,7 @@ export default function Page() {
       }
     });
   } else {
-    WebApp.showAlert(`CloudStorage unuse, ${WebApp.version}`);
+    alert(`CloudStorage unuse, ${WebApp.version}`);
   }
 
   const handleClicpboard = () => {

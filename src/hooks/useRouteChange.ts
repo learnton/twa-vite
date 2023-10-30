@@ -10,6 +10,7 @@ export default function useRouteChange() {
 
   const { pathname } = useLocation();
   useEffect(() => {
+    console.log("pathname=", pathname);
     if (pathname !== "/") {
       WebApp.BackButton.show();
     } else {
