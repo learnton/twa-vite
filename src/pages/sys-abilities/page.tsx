@@ -13,9 +13,11 @@ export default function Page() {
 
   if (parseFloat(WebApp.version) > 6) {
     WebApp.CloudStorage.getItem("user_id", (err, result) => {
-      WebApp.showAlert("cloud user_id=" + result);
-      if (err || !result) {
-        const userDataJson = JSON.parse(WebApp.initData) as any;
+      const userDataJson = JSON.parse(WebApp.initData) as any;
+      WebApp.showAlert(
+        `cloud user_id=${result}, err=${err}, user_id=${userDataJson.user?.id}`
+      );
+      if (!result) {
         WebApp.CloudStorage.setItem(
           "user_id",
           userDataJson.user?.id || "something is wrong"
