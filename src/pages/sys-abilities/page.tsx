@@ -13,7 +13,7 @@ export default function Page() {
 
   if (parseFloat(WebApp.version) > 6) {
     WebApp.CloudStorage.getItem("user_id", (err, result) => {
-      const userDataJson = JSON.parse(WebApp.initData) as any;
+      const userDataJson = WebApp.initData;
       console.log("getItem user_id", err, result, userDataJson.user?.id);
 
       if (!result) {
