@@ -13,17 +13,17 @@ export default function Page() {
 
   if (parseFloat(WebApp.version) > 6) {
     WebApp.CloudStorage.getItem("user_id", (err, result) => {
-      console.log("getItem user_id", err, result);
       const userDataJson = JSON.parse(WebApp.initData) as any;
-      WebApp.showAlert(
-        `cloud user_id=${result}, user_id=${userDataJson.user?.id}`
-      );
+      console.log("getItem user_id", err, result, userDataJson.user?.id);
+
       if (!result) {
+        console.log("setItem ", userDataJson.user?.id);
         WebApp.CloudStorage.setItem(
           "user_id",
           userDataJson.user?.id || "something is wrong"
         );
       } else {
+        console.log("setCloudUserId ", result);
         setCloudUserId(result);
       }
     });
