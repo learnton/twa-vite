@@ -14,6 +14,7 @@ import App from "./App.tsx";
 import SysComponent from "./pages/sys-components/page.tsx";
 import SysAbility from "./pages/sys-abilities/page.tsx";
 import ThemeConfig from "./pages/theme-config/page.tsx";
+import FuncDemo from "./pages/func-demo/page.tsx";
 
 // const modules = import.meta.glob("./pages/*/page.tsx");
 
@@ -34,6 +35,10 @@ const router = createBrowserRouter(
     {
       path: "/theme-config",
       element: <ThemeConfig />,
+    },
+    {
+      path: "/func-demo",
+      element: <FuncDemo />,
     },
     {
       path: "*",

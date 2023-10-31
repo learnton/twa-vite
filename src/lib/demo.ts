@@ -23,6 +23,11 @@ const routes: { name: string; items: Item[] }[] = [
         path: "theme-config",
         description: "主题色配置能力",
       },
+      {
+        name: "功能验证",
+        path: "func-demo",
+        description: "功能验证",
+      },
     ],
   },
 ];

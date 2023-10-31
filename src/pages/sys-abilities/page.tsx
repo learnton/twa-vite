@@ -102,7 +102,7 @@ export default function Page() {
           <Button>请求电话号码权限</Button>
         </li>
         <li>
-          <Button onClick={() => WebApp.switchInlineQuery("start")}>
+          <Button onClick={() => WebApp.switchInlineQuery("", ["bots"])}>
             调起机器人输入
           </Button>
         </li>
