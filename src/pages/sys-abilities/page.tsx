@@ -18,12 +18,11 @@ export default function Page() {
 
       if (!result) {
         console.log("setItem ", userDataJson.user?.id);
-        WebApp.CloudStorage.setItem(
-          "user_id",
-          userDataJson.user?.id
-            ? String(userDataJson.user?.id)
-            : "something is wrong"
-        );
+        const userId = userDataJson.user?.id
+          ? String(userDataJson.user?.id)
+          : "something is wrong";
+        WebApp.CloudStorage.setItem("user_id", userId);
+        setCloudUserId(userId);
       } else {
         console.log("setCloudUserId ", result);
         setCloudUserId(result);
