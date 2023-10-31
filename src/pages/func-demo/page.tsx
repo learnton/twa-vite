@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import useRouteChange from "@/hooks/useRouteChange.ts";
 
 const saveFile = function (fileText: string) {
-  const DownloadDom = document.getElementById("Download");
+  const DownloadDom = document.getElementById("Download") as any;
   if (DownloadDom) {
     const myBlob = new Blob([fileText], { type: "application/json" });
     DownloadDom.href = window.URL.createObjectURL(myBlob);
