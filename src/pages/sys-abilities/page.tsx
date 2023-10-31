@@ -8,7 +8,7 @@ export default function Page() {
   useRouteChange();
   // expand mini app
   WebApp.expand();
-  console.log("WebApp.version", WebApp.version, parseFloat(WebApp.version));
+  console.log("WebApp.version", WebApp.version, WebApp.initData);
   const [CloudUserId, setCloudUserId] = useState("");
 
   if (parseFloat(WebApp.version) > 6) {
@@ -65,7 +65,7 @@ export default function Page() {
       <h1 className="font-bold text-xl">sys-ability</h1>
 
       <ul className="space-y-2">
-        <li>用户信息：{JSON.stringify(WebApp.initData)}</li>
+        <li>用户信息：{JSON.stringify(WebApp.initDataUnsafe.user)}</li>
         <li>Bot API Version: {WebApp.version}</li>
         <li>platform name: {WebApp.platform}</li>
 
