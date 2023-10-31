@@ -4,6 +4,7 @@ import useRouteChange from "@/hooks/useRouteChange.ts";
 
 export default function Page() {
   useRouteChange();
+  console.log("App.tsx runing");
 
   return (
     <>
