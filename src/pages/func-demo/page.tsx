@@ -36,6 +36,7 @@ export default function Page() {
           <a
             href="https://static.refined-x.com/static/%E6%89%B9%E5%A4%84%E7%90%86%E5%AE%BD%E5%BA%A6640.atn"
             target="_blank"
+            download="批处理宽度640.atn"
           >
             外链url
           </a>
