@@ -2,24 +2,30 @@
 import { useEffect } from "react";
 // import WebApp from "@twa-dev/sdk";
 import useRouteChange from "@/hooks/useRouteChange.ts";
-import WebApp from "@twa-dev/sdk";
+import { downloadBlob } from "./util";
 
-const saveFile = function (fileText: string) {
-  const DownloadDom = document.getElementById("Download") as any;
-  if (DownloadDom) {
-    const myBlob = new Blob([fileText], { type: "application/json" });
-    DownloadDom.href = window.URL.createObjectURL(myBlob);
-    console.log("下载文件已就绪");
-  } else {
-    WebApp.showAlert("without DownloadDom");
-  }
+const myBlob = new Blob([`{"hello": "world"}, "timestamp": ${Date.now()}`], {
+  type: "application/json",
+});
+const saveFile = function () {
+  // Create a download link for the blob content
+  const downloadLink = downloadBlob(myBlob, "keyfile.json");
+  downloadLink.title = "keyfile.json";
+  // Set the text content of the download link
+  downloadLink.textContent = "Export";
+  downloadLink.id = "insertDom";
+  // Attach the link to the DOM
+  document.body.appendChild(downloadLink);
 };
 
 export default function Page() {
   useRouteChange();
 
   useEffect(() => {
-    saveFile(`{"hello": "world"}`);
+    const $dom = document.getElementById("insertDom");
+    if (!$dom) {
+      saveFile();
+    }
   }, []);
 
   return (
@@ -33,9 +39,6 @@ export default function Page() {
         </li>
         <li>
           下载：
-          <a id="Download" download="download.json" target="_blank">
-            组装blob
-          </a>
           <a
             href="https://static.refined-x.com/static/%E6%89%B9%E5%A4%84%E7%90%86%E5%AE%BD%E5%BA%A6640.atn"
             target="_blank"
