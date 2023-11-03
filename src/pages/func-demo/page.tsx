@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 // import WebApp from "@twa-dev/sdk";
 import useRouteChange from "@/hooks/useRouteChange.ts";
+import WebApp from "@twa-dev/sdk";
 
 const saveFile = function (fileText: string) {
   const DownloadDom = document.getElementById("Download") as any;
@@ -9,6 +10,8 @@ const saveFile = function (fileText: string) {
     const myBlob = new Blob([fileText], { type: "application/json" });
     DownloadDom.href = window.URL.createObjectURL(myBlob);
     console.log("下载文件已就绪");
+  } else {
+    WebApp.showAlert("without DownloadDom");
   }
 };
 
