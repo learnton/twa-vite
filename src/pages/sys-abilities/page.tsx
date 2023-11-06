@@ -106,6 +106,18 @@ export default function Page() {
             调起机器人输入
           </Button>
         </li>
+        <li>
+          <Button
+            onClick={() =>
+              WebApp.sendData({
+                data: "hello bot",
+                button_text: "webApp",
+              })
+            }
+          >
+            向机器人发消息
+          </Button>
+        </li>
         <li>CloudStorage: {CloudUserId || "unset"}</li>
       </ul>
     </div>
